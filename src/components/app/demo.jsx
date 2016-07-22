@@ -5,7 +5,7 @@ import './app.less';
 class Demo extends Component {
   render() {
     return (
-      <p className="hello">Hello demo</p>
+      <p className="hello" data-attr="this is a demo">Hello demo</p>
     )
   }
 }

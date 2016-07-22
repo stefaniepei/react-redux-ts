@@ -6,10 +6,16 @@
   "author": "stefaniepei@icloud.com",
   "license": "MIT",
   "scripts": {
-    "dev": "rm -rf ./dist && node ./build/server.js",
-    "build": "rm -rf ./dist && webpack --config ./build/webpack.prod.config.js"
+    /*webpack-dev-server: 在 localhost:8080 建立一个 Web 服务器
+      --devtool eval:为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号
+      --progress: 显示合并代码进度
+      --colors: 在命令行中显示颜色
+      --content-base build:指向设置的输出目录*/
+    "dev": "rm -rf ./dist && node ./build/server.js && webpack",
+    "build": "rm -rf ./dist && webpack --config ./build/webpack.prod.config.js && webpack-dev-server --devtool eval --progress --colors --content-base build"
   },
   "dependencies": {
+    "axios": "^0.12.0",
     "babel": "^5.8.23",
     "babel-core": "^6.9.1",
     "babel-polyfill": "^6.9.1",
@@ -18,6 +24,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "fastclick": "^1.0.6",
@@ -35,7 +42,7 @@
     "redux": "^3.5.2",
     "redux-form": "^5.2.5",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0",
+    "redux-thunk": "^2.1.0",/*action sync*/
     "redux-router": "^1.0.0-beta3",
     "reqwest": "^2.0.5",
     "reselect": "^2.5.1",
@@ -47,6 +54,7 @@
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^1.1.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",/*装饰器 语义化*/
     "babel-runtime": "^5.8.25",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
