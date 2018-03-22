@@ -1,0 +1,40 @@
+.BraftEditor-container {
+    border: 1px solid #d9d9d9;
+    .BraftEditor-controlBar {
+        .braft-emoji-dropdown {
+            display: none;
+        }
+        .split-line {
+            display: none
+        }
+        .control-item-group {
+            display: none
+        }
+    }
+}
+
+.h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.ant-modal {
+    .ant-modal-body {
+        .modal-div {
+            height: 21px;
+            margin-bottom: 1em;
+        }
+        .line-full {
+            border-top: 1px solid #797979;
+            padding-top: 20px;
+        }
+    }
+}
+
+.inline {
+    display: inline-block;
+}

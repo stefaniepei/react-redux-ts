@@ -1,36 +1,159 @@
-# React Scaffold
-This project contains the react infrastructure
+# react-redux-ts
+脚手架
 
-# Feature
-- ES6+ support, use babel
-- with development and the product model
-- development patterns support heat load
-- convenient extension, at the same time joined the less, postcss, redux loader, etc
+# react-redux-ts
+React V16 + ReactRouter V4 + Redux + TypeScript + HMR
 
-# Setup
-- git clone https://git.coding.net/starriv/react-scaffold.git
-- npm install
+# 特性
 
-# Run
-default use development model
-- dev:  npm run dev && open your brower to http://127.0.0.1:3002
-- prod: npm run build
+- [x] React V16 + ReactRouter V4 + Redux + TypeScript2.7.2 + HMR + Webpack4
+- [x] sass模块化
+- [x] 支持热更新
+- [x] 支持tslint语法检查,提交检查
 
 
-# React 脚手架
-包含基础的React 项目结构
+# 快速开始
 
-# 特点
-- ES6+的支持,使用Babel转换
-- 开发模式 和 产品模式
-- 开发模式热加载支持
-- 方便扩展, 同时加入了less, postcss, redux 等loader
+## 安装
 
-# 安装
-- git clone https://git.coding.net/starriv/react-scaffold.git
-- npm install
+````bash
+$ npm install
+$ npm install -g ts-node
+$ npm install -g typescript
+````
 
-# 运行
-默认为开发模式
-- dev npm run dev && 打开浏览器 http://127.0.0.1:3002
-- prod npm run build
+## 客户端启动
+
+````bash
+$ npm run start
+````
+
+## 运行测试环境
+
+````bash
+$ npm run dev
+````
+
+## 运行QA环境
+
+````bash
+$ npm run qa
+````
+
+## 运行生产环境
+
+````bash
+$ npm run prod
+````
+
+## 文件内关闭lint语法检查
+
+````bash
+//tslint:disable-line
+/* tslint:disable */ - Disable all rules for the rest of the file
+/* tslint:enable */ - Enable all rules for the rest of the file
+/* tslint:disable:rule1 rule2 rule3... */ - Disable the listed rules for the rest of the file
+/* tslint:enable:rule1 rule2 rule3... */ - Enable the listed rules for the rest of the file
+// tslint:disable-next-line - Disables all rules for the following line someCode();
+// tslint:disable-line - Disables all rules for the current line
+// tslint:disable-next-line:rule1 rule2 rule3... - Disables the listed rules for the next line
+/* eslint-disable */
+/* eslint-disable no-alert, no-console */
+// eslint-disable-line
+````
+### 项目基本信息
+#### Github地址：
+https://github.com/stefaniepei/react-redux-ts.git
+#### 分支：
+origin/master
+#### 测服地址：
+
+
+#### 前端部署
+##### 1.npm run deploy
+##### 2.本地代码提交到git远程仓库
+##### 3.服务端git pull最新的代码
+
+##### ps:/data1/app/services/nginx/conf/nginx.conf 参考配置
+````bash
+http {
+  include       mime.types;
+  default_type  application/octet-stream;
+  # max_ranges    0;
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+
+  log_format ip_log '$http_x_forwarded_for - $remote_user [$time_local] '
+                      '"$request" $status $body_bytes_sent'
+                      '"$http_referer" "$http_user_agent"';
+
+  server_names_hash_bucket_size 128;
+  client_header_buffer_size 32k;
+  large_client_header_buffers 4 64k;
+  client_max_body_size 100m;
+  sendfile        on;
+  tcp_nopush      on;
+  tcp_nodelay     on;
+  keepalive_timeout  120;
+  server_tokens off;
+  fastcgi_connect_timeout 120;
+  fastcgi_send_timeout 120;
+  fastcgi_read_timeout 120;
+  fastcgi_buffer_size 64k;
+  fastcgi_buffers 4 64k;
+  fastcgi_busy_buffers_size 128k;
+  fastcgi_temp_file_write_size 128k;
+  fastcgi_intercept_errors on;
+    
+  #gzip
+  gzip on;
+  gzip_min_length 1k;
+  gzip_buffers 4 16k;
+  gzip_http_version 1.0;
+  gzip_comp_level 2;
+  gzip_types text/plain application/javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+  gzip_vary off;
+  gzip_disable "MSIE [1-6]\.";
+
+  output_buffers   1 32k;
+  postpone_output  1460;
+
+  server {
+      listen 8806;
+      listen       443;
+
+      server_name  localhost;
+      root /data2/www/react-redux-ts/dist;
+      access_log off;
+      #access_log /data1/app/services/nginx/logs/access.log ip_log;
+      error_log  /data1/app/services/nginx/logs/error.log warn;
+
+      location / {
+        index  index.html index.htm;
+        proxy_buffer_size 64k;
+        proxy_buffers   32 32k;
+        proxy_busy_buffers_size 128k;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP       $remote_addr;
+        proxy_set_header X-Forwarded-For  $proxy_add_x_forwarded_for;
+        root /data2/www/react-redux-ts/dist;
+      }
+
+      location ~ .*\.(jpg|jpeg|png|gif|bmp|js|css|swf|ico)$ {
+        expires 30d;
+        access_log off;
+      }
+      location /favicon.ico {
+        root /data2/www/react-redux-ts/dist;
+        log_not_found off;
+        access_log off;
+      }
+      location ~* {
+        rewrite .* /index.html break;
+        root /data2/www/react-redux-ts/dist;
+      }
+  }
+  include /data1/app/services/nginx/conf/vhost/*.conf;
+}
+````

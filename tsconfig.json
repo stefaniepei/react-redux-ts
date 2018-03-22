@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "allowJs": true,
+    "lib": [
+      "es2015",
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "jsx": "react",
+    "sourceMap": true,
+    "rootDir": "./",
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "ramda": [
+        "location-of-types/npm-ramda-package/index"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./build/server/*.ts",
+    "./build/server/*.tsx",
+    "./typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

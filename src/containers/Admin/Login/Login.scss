@@ -1,0 +1,56 @@
+.admin-login {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: #f0f2f5;
+    background-image: url(./assets/login.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%; // padding: 200px 0 280px 0;
+    .main {
+        width: 400px;
+        min-height: calc(100vh - 183px);
+        margin: 90px auto 0;
+
+        .logo {
+            display: block;
+            margin: 50px auto;
+            width: 150px;
+        }
+        .form {
+            margin-bottom: 9px;
+        }
+        .prefixIcon {
+            font-size: 14px;
+            color: grey;
+        }
+        .additional {
+            text-align: left;
+            .forgot {
+                float: right;
+            }
+            .submit {
+                width: 100%;
+                margin-top: 24px;
+            }
+             :global {
+                .ant-form-item-control {
+                    line-height: 22px;
+                }
+            }
+            .failMessage {
+                display: none;
+                margin-top: 24px;
+                padding: 0 5px;
+                color: red;
+                &.show {
+                    display: block;
+                }
+            }
+        }
+    }
+    .footer {
+        text-align: center;
+        background: none;
+    }
+}

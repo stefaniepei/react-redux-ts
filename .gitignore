@@ -1,6 +1,8 @@
-.DS_Store
 node_modules/
 dist/
-npm-debug.log
-selenium-debug.log
-test/unit/coverage
+bower_components/
+*.log
+.idea/
+.package-lock.json
+backend/node_modules/
+backend/build/
