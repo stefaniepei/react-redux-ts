@@ -5,33 +5,30 @@ const appId = 2001
 
 // open api host
 const host = {
-  'production': 'https://qa-gateway.shinezone.com/v1',
-  'qa': 'http://172.16.1.22:9301/v1',
-  'development': 'http://172.16.1.21:9301/v1',
-  // 刘胜朋: 'http://172.16.0.171:9301/v1',
-  // 于士博: 'http://172.16.1.21:9301/v1'
-  // 王宇喆: 'http://xxx/v1'
+  'production': 'https://prod.com/v1',
+  'qa': 'http://qa.com/v1',
+  'development': 'http://dev.com/v1',
 }
 
 // sso api host
 const ssoHost = {
-  'production': 'https://qa-gateway.shinezone.com/v1',
-  'qa': 'http://qa-gateway.shinezone.com:9301/v1',
-  'development': 'http://dev-gateway.shinezone.com:9301/v1',
+  'production': 'https://prod.com/v1',
+  'qa': 'http://qa.com/v1',
+  'development': 'http://dev.com/v1',
 }
 
 // backend api host
 const tokenHost = {
-  'production': 'http://172.16.0.240:9301/v1',
-  'qa': 'http://172.16.0.240:9311/v1',
-  'development': 'http://172.16.0.240:9211/v1',
+  'production': 'https://prod.com/v1',
+  'qa': 'http://qa.com/v1',
+  'development': 'http://dev.com/v1',
 }
 
 // upload api host
 const uploadHost = {
-  'production': 'http://172.16.0.171:9301/v1/gmtool/common/uploadImage',
-  'qa': 'http://172.16.0.171:9301/v1/gmtool/common/uploadImage',
-  'development': 'http://172.16.0.171:9301/v1/gmtool/common/uploadImage',
+  'production': 'https://prod.com/v1',
+  'qa': 'http://qa.com/v1',
+  'development': 'http://dev.com/v1',
 }
 
 class Configs {
