@@ -18,6 +18,7 @@ class Editor extends React.PureComponent<Props, any> {
     super(props)
     this.state = {
       content: this.props.content || '',
+      contentId: 0,
     }
   }
   componentWillReceiveProps(nextProps: any) {
@@ -26,6 +27,7 @@ class Editor extends React.PureComponent<Props, any> {
     if (me.props.content !== nextProps.content) {
       me.setState({
         content: nextProps.content || '',
+        contentId: this.state.contentId + 1,
       })
     }
 
@@ -38,6 +40,9 @@ class Editor extends React.PureComponent<Props, any> {
     }
 
     const changeInit = () => {
+      this.setState({
+        contentId: this.state.contentId + 1,
+      })
       this.props.changeInit()
     }
 
@@ -46,6 +51,7 @@ class Editor extends React.PureComponent<Props, any> {
       placeholder: '最多可输入3000个字符',
       contentFormat: 'html',
       initialContent: this.state.content,
+      contentId: this.state.contentId,
       onHTMLChange: handleHTMLChange,
     }
 

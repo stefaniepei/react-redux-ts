@@ -1,6 +1,7 @@
 /* tslint:disable */
 import * as path from 'path'
 import * as webpack from 'webpack'
+import * as fs from 'fs-extra'
 import clientConfig from './webpack.client'
 import configs from '../configs'
 
@@ -43,6 +44,10 @@ const webpackCompiler = (config: any, statsFormat?: any) => {
       debug('Client Config set to fail on warning, exiting with status code "1".')
       process.exit(1)
     }
+    debug('Server Copy static assets to dist folder.')
+    fs.copySync(
+      configs.assetsDir, configs.outDir
+    )
   } catch (e) {
     debug('Compiler encountered an error.', e)
     process.exit(1)

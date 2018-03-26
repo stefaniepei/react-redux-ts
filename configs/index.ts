@@ -7,7 +7,7 @@ export default {
   pathBase: path.join(__dirname, '..'),
   pathSrc: path.join(__dirname, '../src'),
   outDir: path.join(__dirname, '../dist'),
-  assetsDir: path.join(__dirname, '../src/assets'),
+  assetsDir: path.join(__dirname, '../src/assets/img'),
   port: process.env.PORT || 9004,
   version: '1.0.0',
   compilerVendor: [
