@@ -1,5 +1,6 @@
 import CONSTANT from './constant'
-import * as objectAssign from 'object-assign'
+import UtilsR from '../../utils/ramda'
+// import * as objectAssign from 'object-assign'
 
 let initialState = {
   count: 0,
@@ -9,16 +10,13 @@ export default function(state = initialState, action) {
   console.log(state, action)
   switch (action.type) {
     case CONSTANT.ADD:
-      return objectAssign({}, state, {
-        count: state.count + 1,
-      })
+      return UtilsR.evolve({ count: UtilsR.R.add(1) }, state)
+    // return objectAssign({}, state, {
+    //   count: state.count + 1,
+    // })
     case CONSTANT.SUB:
-      return objectAssign({}, state, {
-        count: state.count - 1,
-      })
+      return UtilsR.evolve({ count: UtilsR.R.add(-1) }, state)
     default:
-      return objectAssign({}, state, {
-        count: state.count,
-      })
+      return state
   }
 }

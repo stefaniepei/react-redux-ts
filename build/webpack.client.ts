@@ -211,7 +211,7 @@ if (__DEV__) {
         drop_console: true,
         unused: true,
         dead_code: true,
-        screw_ie8: false,
+        // screw_ie8: false,
         warnings: false,
       },
       sourceMap: false,

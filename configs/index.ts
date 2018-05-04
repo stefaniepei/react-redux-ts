@@ -9,7 +9,7 @@ export default {
   outDir: path.join(__dirname, '../dist'),
   assetsDir: path.join(__dirname, '../src/assets/img'),
   port: process.env.PORT || 9004,
-  version: '1.0.0',
+  version: '1.0.6',
   compilerVendor: [
     'antd',
     'axios',
@@ -23,6 +23,7 @@ export default {
     'redux',
     'react-redux',
     'react-router-redux',
+    'ramda',
   ],
   sourcemaps: false,
   globals: {},

@@ -1,9 +1,10 @@
 import * as React from 'react'
-import Configs from '../../../../common/Configs'
+import Configs from '../../common/Configs'
 import _debug from 'debug'
 const debug = _debug('app:Common:Editor')
 
 import BraftEditor from 'braft-editor'
+import { convertHTMLToRaw } from 'braft-convert'
 import 'braft-editor/dist/braft.css'
 
 interface Props {
@@ -17,7 +18,7 @@ class Editor extends React.PureComponent<Props, any> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      content: this.props.content || '',
+      content: (this.props.content) || '',
       contentId: 0,
     }
   }
@@ -26,7 +27,7 @@ class Editor extends React.PureComponent<Props, any> {
     // 原始数据发生改变
     if (me.props.content !== nextProps.content) {
       me.setState({
-        content: nextProps.content || '',
+        content: (nextProps.content) || '',
         contentId: this.state.contentId + 1,
       })
     }
@@ -35,7 +36,7 @@ class Editor extends React.PureComponent<Props, any> {
 
   render() {
 
-    const handleHTMLChange = (content) => {
+    const handleRawChange = (content) => {
       this.props.changeContent(content)
     }
 
@@ -49,10 +50,12 @@ class Editor extends React.PureComponent<Props, any> {
     const editorProps = {
       height: 500,
       placeholder: '最多可输入3000个字符',
-      contentFormat: 'html',
-      initialContent: this.state.content,
+      // contentFormat: 'html',
+      // onHTMLChange: handleHTMLChange,
+      initialContent: convertHTMLToRaw(this.state.content),
       contentId: this.state.contentId,
-      onHTMLChange: handleHTMLChange,
+      onRawChange: handleRawChange,
+      controls: ['bold', 'italic', 'underline', 'font-size', 'text-color', 'link', 'media'],
     }
 
     const uploadFn = (param) => {
@@ -98,7 +101,7 @@ class Editor extends React.PureComponent<Props, any> {
     }
 
     return (
-      <BraftEditor {...editorProps} onBlur={changeInit} media={{ uploadFn: uploadFn }} />
+      <BraftEditor {...editorProps} onBlur={changeInit} media={{ uploadFn: uploadFn, video: false, audio: false }} />
     )
 
   }
